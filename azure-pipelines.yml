@@ -1,7 +1,3 @@
-# Deploy to Azure Kubernetes Service
-# Build and push image to Azure Container Registry; Deploy to Azure Kubernetes Service
-# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
-
 trigger:
 - main
 
@@ -44,12 +40,12 @@ stages:
     - upload: manifests
       artifact: manifests
 
-- stage: Deploy test
+- stage: DeployTest
   displayName: Deploy stage test
   dependsOn: Build
 
   jobs:
-  - deployment: Deploy test
+  - deployment: DeployTestJob
     displayName: Deploy stage test
     pool:
       vmImage: $(vmImageName)
@@ -76,16 +72,17 @@ stages:
                 $(imagePullSecret)
               containers: |
                 $(containerRegistry)/$(imageRepository):$(tag)
-- stage: Deploy prod
+
+- stage: DeployProd
   displayName: Deploy stage prod
   dependsOn: Build
 
   jobs:
-  - deployment: Deploy prod
+  - deployment: DeployProdJob
     displayName: Deploy stage prod
     pool:
       vmImage: $(vmImageName)
-    environment: 'Yugender143dotnetdemo.prod'
+    environment: 'Yugender143dotnetdemo2.prod'
     strategy:
       runOnce:
         deploy:
