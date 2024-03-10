@@ -2,6 +2,7 @@ apiVersion : apps/v1
 kind: Deployment
 metadata:
   name: image 
+  namespace: test
 spec:
   replicas: 1
   selector:
@@ -14,6 +15,6 @@ spec:
     spec:
       containers:
         - name: image 
-          image:saiacr123.azurecr.io/img
+          image: saiacr123.azurecr.io/img
           ports:
           - containerPort: 80
