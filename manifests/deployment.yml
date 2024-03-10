@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: yugenderdotnetdemoimg 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: yugenderdotnetdemoimg
+  template:
+    metadata:
+      labels:
+        app: yugenderdotnetdemoimg 
+    spec:
+      containers:
+        - name: yugenderdotnetdemoimg 
+          image: saiacr123.azurecr.io/yugenderdotnetdemoimg
+          ports:
+          - containerPort: 80
