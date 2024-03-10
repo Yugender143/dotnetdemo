@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: image 
-          image: myacr3641.azurecr.io/image
+          image:saiacr123.azurecr.io/img
           ports:
           - containerPort: 80
