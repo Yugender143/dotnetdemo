@@ -1,19 +1,20 @@
 apiVersion : apps/v1
 kind: Deployment
 metadata:
-  name: dotnetdemo 
+  name: image
+  namespace: prod
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: dotnetdemo
+      app: image
   template:
     metadata:
       labels:
-        app: dotnetdemo 
+        app: image 
     spec:
       containers:
-        - name: dotnetdemo 
-          image: myacr3641.azurecr.io/image
+        - name: image 
+          image: saiacr123.azurecr.io/img
           ports:
           - containerPort: 80
